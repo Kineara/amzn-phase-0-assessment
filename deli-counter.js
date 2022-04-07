@@ -1,24 +1,33 @@
-// 1. Write your functions here
+const deliQueue = [];
 
+function line(queue) {
+  if (queue.length === 0) {
+    console.log("The line is currently empty.");
+  } else {
+    const linePositions = queue.map(person => ` ${deliQueue.indexOf(person) + 1}. ${person}`);
+    console.log(`The line is currently:${linePositions}.`);
+  }
+}
 
-// 2. Example Usage
+function takeANumber(queue, name) {
+  queue.push(name);
+  console.log(`Welcome, ${name}. You are number ${deliQueue.indexOf(name) + 1} in line.`);
+}
 
-// const katzDeli = []
+function nowServing(queue) {
+  if (queue.length === 0) {
+    console.log("There is nobody waiting to be served!");
+  } else {
+    const serving = queue.shift();
+    console.log(`Currently serving ${serving}.`);
+  }
+}
 
-// takeANumber(katzDeli, "Ada") //=> Welcome, Ada. You are number 1 in line.
-// takeANumber(katzDeli, "Grace") //=> Welcome, Grace. You are number 2 in line.
-// takeANumber(katzDeli, "Kent") //=> Welcome, Kent. You are number 3 in line.
+function personLeft(queue, name) {
+  queue.splice((queue.indexOf(name)), 1);
+  console.log(`${name} has lost their place in line!`);
+}
 
-// line(katzDeli) //=> "The line is currently: 1. Ada 2. Grace 3. Kent"
-
-// nowServing(katzDeli) //=> "Currently serving Ada."
-
-// line(katzDeli) //=> "The line is currently: 1. Grace 2. Kent"
-
-// takeANumber(katzDeli, "Matz") //=> Welcome, Matz. You are number 3 in line.
-
-// line(katzDeli) //=> "The line is currently: 1. Grace 2. Kent 3. Matz"
-
-// nowServing(katzDeli) //=> "Currently serving Grace."
-
-// line(katzDeli) //=> "The line is currently: 1. Kent 2. Matz"
+function fireAlarm(queue) {
+  console.log(`${queue.join(', ')}! The fire alarm's been pulled, everyone out!`);
+}
